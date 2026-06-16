@@ -1,0 +1,67 @@
+experiment:
+  seed: 42
+  method: de_vjepa_band  # vjepa | de_vjepa | de_vjepa_band
+
+data:
+  tasks:
+    - reach-v3
+    - button-press-v3
+    - drawer-open-v3
+    - door-open-v3
+    - pick-place-v3
+  episodes_per_task: 100
+  max_steps: 200
+  image_size: 224
+  camera: corner2
+  validation_fraction: 0.2
+  raw_path: data/metaworld_pilot_raw.npz
+  encoded_path: data/metaworld_pilot_resnet18.npz
+
+encoder:
+  # Practical pilot proxy. Replace the adapter in encode.py with the chosen
+  # official V-JEPA checkpoint before claiming a V-JEPA-backbone result.
+  name: resnet18_imagenet
+  batch_size: 64
+
+policy:
+  quality: strong  # strong | weak | random
+  hidden_dim: 512
+  task_dim: 32
+  batch_size: 1024
+  epochs: 30
+  weak_epochs: 2
+  learning_rate: 0.0003
+  weight_decay: 0.00001
+
+predictor:
+  hidden_dim: 1024
+  stochastic_dim: 64
+  task_dim: 32
+  horizon: 1
+  batch_size: 512
+  epochs: 50
+  learning_rate: 0.0003
+  weight_decay: 0.00001
+  gradient_clip: 5.0
+
+loss:
+  beta: 0.001
+  decision_weight: 1.0
+  epsilon0: 0.01
+  uncertainty_scale: 0.05
+  gamma: 0.95
+
+bjepa:
+  prior_type: empirical_task_gaussian
+  loss_type: nll
+
+evaluation:
+  batch_size: 1024
+
+runtime:
+  device: cuda
+  workers: 8
+  amp: true
+
+output:
+  dir: outputs/pilot

@@ -1,0 +1,33 @@
+name: de_bjepa_lambda_sweep
+base_config: configs/pilot.yaml
+archive_tasks:
+  [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+tasks: [reach-v3, button-press-v3, drawer-open-v3]
+seeds: [42, 1000, 10000]
+evaluator_seeds: [42, 1000, 10000]
+shifts: [clean, brightness]
+artifacts_dir: outputs/ablations
+conditions:
+  - {name: de_vjepa_l0, objective: hybrid, lambda_de: 0.0, bjepa_prior_type: none, reference_policy_type: strong_bc}
+  - {name: de_vjepa_l1e-4, objective: hybrid, lambda_de: 0.0001, bjepa_prior_type: none, reference_policy_type: strong_bc}
+  - {name: de_vjepa_l1e-3, objective: hybrid, lambda_de: 0.001, bjepa_prior_type: none, reference_policy_type: strong_bc}
+  - {name: de_vjepa_l1e-2, objective: hybrid, lambda_de: 0.01, bjepa_prior_type: none, reference_policy_type: strong_bc}
+  - {name: de_vjepa_l3e-2, objective: hybrid, lambda_de: 0.03, bjepa_prior_type: none, reference_policy_type: strong_bc}
+  - {name: de_vjepa_l1e-1, objective: hybrid, lambda_de: 0.1, bjepa_prior_type: none, reference_policy_type: strong_bc}
+  - {name: de_bjepa_l0, objective: de_bjepa, lambda_de: 0.0, bjepa_prior_type: empirical_task_gaussian, bjepa_loss_type: nll, reference_policy_type: strong_bc}
+  - {name: de_bjepa_l1e-4, objective: de_bjepa, lambda_de: 0.0001, bjepa_prior_type: empirical_task_gaussian, bjepa_loss_type: nll, reference_policy_type: strong_bc}
+  - {name: de_bjepa_l1e-3, objective: de_bjepa, lambda_de: 0.001, bjepa_prior_type: empirical_task_gaussian, bjepa_loss_type: nll, reference_policy_type: strong_bc}
+  - {name: de_bjepa_l1e-2, objective: de_bjepa, lambda_de: 0.01, bjepa_prior_type: empirical_task_gaussian, bjepa_loss_type: nll, reference_policy_type: strong_bc}
+  - {name: de_bjepa_l3e-2, objective: de_bjepa, lambda_de: 0.03, bjepa_prior_type: empirical_task_gaussian, bjepa_loss_type: nll, reference_policy_type: strong_bc}
+  - {name: de_bjepa_l1e-1, objective: de_bjepa, lambda_de: 0.1, bjepa_prior_type: empirical_task_gaussian, bjepa_loss_type: nll, reference_policy_type: strong_bc}
+output:
+  raw: results/de_bjepa_lambda_sweep.csv
+analysis:
+  input: results/de_bjepa_lambda_sweep.csv
+  summary: results/de_bjepa_lambda_sweep_summary.csv
+  table: tables/de_bjepa_lambda_sweep_table.tex
+  plots_dir: plots
+  plot_kind: lambda
+  plot_prefix: de_bjepa_lambda
+  baseline_method: de_vjepa_l0
+  pair_by_task: true

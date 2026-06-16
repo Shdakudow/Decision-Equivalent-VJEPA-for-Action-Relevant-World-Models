@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\caption{Closed-loop MetaWorld success rate (\%) with 95\% episode-bootstrap confidence intervals.}
+\label{tab:closed-loop-rollout}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+\textbf{Method} & \textbf{Clean} & \textbf{Brightness} & \textbf{Background Shift} \\
+\midrule
+bc\_only & 79.4 [73.3, 85.6] & 13.3 [8.3, 18.3] & 30.6 [24.4, 37.2] \\
+bc\_plus\_vjepa\_value\_planner: score=value\_score, planning\_horizon=1 & 37.8 [31.1, 45.0] & 11.7 [7.2, 16.7] & 23.3 [17.2, 29.4] \\
+bc\_plus\_de\_vjepa\_value\_planner: score=value\_score, planning\_horizon=1 & 37.2 [30.0, 44.4] & 19.4 [14.4, 25.6] & 29.4 [22.8, 36.7] \\
+bc\_plus\_vjepa\_value\_planner: score=value\_score, alpha=0.01, planning\_horizon=1 & 45.0 [37.8, 51.7] & 15.0 [10.0, 20.6] & 31.1 [24.4, 37.8] \\
+bc\_plus\_de\_vjepa\_value\_planner: score=value\_score, alpha=0.01, planning\_horizon=1 & 41.1 [33.9, 48.3] & 24.4 [18.3, 31.1] & 28.9 [22.2, 35.6] \\
+bc\_plus\_vjepa\_value\_planner: score=value\_score, alpha=0.1, planning\_horizon=1 & 77.8 [71.7, 83.9] & 13.3 [8.9, 18.9] & 30.6 [24.4, 37.2] \\
+bc\_plus\_de\_vjepa\_value\_planner: score=value\_score, alpha=0.1, planning\_horizon=1 & 78.9 [72.8, 84.4] & 13.3 [8.9, 18.9] & 30.6 [23.9, 37.2] \\
+bc\_plus\_vjepa\_value\_planner: score=value\_score, alpha=0.3, planning\_horizon=1 & 80.0 [73.9, 85.6] & 13.3 [8.3, 18.3] & 30.6 [23.9, 37.2] \\
+bc\_plus\_de\_vjepa\_value\_planner: score=value\_score, alpha=0.3, planning\_horizon=1 & 80.0 [73.9, 85.6] & 13.3 [8.9, 18.3] & 30.6 [24.4, 37.2] \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{Autoregressive multi-step prediction diagnostic. Lower is better.}
+\label{tab:multistep-diagnostic}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Method} & \textbf{$K$} & \textbf{Latent MSE} & \textbf{Decision KL} & \textbf{Action MSE} \\
+\midrule
+bc\_plus\_de\_vjepa & 1 & 0.001545 & 0.3004 & 0.000267 \\
+bc\_plus\_de\_vjepa & 3 & 0.003727 & 0.7888 & 0.000694 \\
+bc\_plus\_de\_vjepa & 5 & 0.005886 & 1.3214 & 0.001138 \\
+bc\_plus\_vjepa & 1 & 0.001336 & 0.3778 & 0.000289 \\
+bc\_plus\_vjepa & 3 & 0.003233 & 0.9050 & 0.000688 \\
+bc\_plus\_vjepa & 5 & 0.005170 & 1.5311 & 0.001124 \\
+\bottomrule
+\end{tabular}
+\end{table}

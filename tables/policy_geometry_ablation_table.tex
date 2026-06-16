@@ -1,0 +1,30 @@
+\begin{tabular}{lrlllrrrrr}
+\toprule
+method & lambda & reference\_policy\_type & shift & metric & mean & stderr & relative\_change\_percent & paired\_t\_p & wilcoxon\_p \\
+\midrule
+latent\_only & 0 & none & brightness & latent\_mse & 0.05113 & 2.82e-05 & 0 & NaN & NaN \\
+latent\_only & 0 & none & brightness & decision\_kl & 322.1 & 58.68 & 0 & NaN & NaN \\
+latent\_only & 0 & none & brightness & action\_mse & 0.07567 & 0.006058 & 0 & NaN & NaN \\
+latent\_only & 0 & none & clean & latent\_mse & 0.001507 & 4.716e-05 & 0 & NaN & NaN \\
+latent\_only & 0 & none & clean & decision\_kl & 0.3343 & 0.01299 & 0 & NaN & NaN \\
+latent\_only & 0 & none & clean & action\_mse & 0.0006998 & 2.299e-05 & 0 & NaN & NaN \\
+random\_policy\_KL & 0.01 & random & brightness & latent\_mse & 0.05112 & 3.101e-05 & -0.003984 & 0.7322 & 0.875 \\
+random\_policy\_KL & 0.01 & random & brightness & decision\_kl & 321.9 & 58.78 & -0.06844 & 0.5588 & 1 \\
+random\_policy\_KL & 0.01 & random & brightness & action\_mse & 0.07568 & 0.006064 & 0.01724 & 0.4622 & 0.5625 \\
+random\_policy\_KL & 0.01 & random & clean & latent\_mse & 0.001507 & 4.715e-05 & 0.0003964 & 0.6495 & 0.875 \\
+random\_policy\_KL & 0.01 & random & clean & decision\_kl & 0.3343 & 0.01299 & -0.001932 & 0.7705 & 0.8438 \\
+random\_policy\_KL & 0.01 & random & clean & action\_mse & 0.0006999 & 2.296e-05 & 0.009797 & 0.1488 & 0.1562 \\
+strong\_BC\_policy\_KL & 0.01 & strong & brightness & latent\_mse & 0.05114 & 7.986e-05 & 0.02973 & 0.8894 & 0.875 \\
+strong\_BC\_policy\_KL & 0.01 & strong & brightness & decision\_kl & 243.5 & 54.59 & -24.4 & 0.01883 & 0.03125 \\
+strong\_BC\_policy\_KL & 0.01 & strong & brightness & action\_mse & 0.0711 & 0.005739 & -6.046 & 0.04559 & 0.1562 \\
+strong\_BC\_policy\_KL & 0.01 & strong & clean & latent\_mse & 0.001743 & 5.899e-05 & 15.61 & 3.871e-05 & 0.03125 \\
+strong\_BC\_policy\_KL & 0.01 & strong & clean & decision\_kl & 0.2638 & 0.01085 & -21.11 & 3.057e-06 & 0.03125 \\
+strong\_BC\_policy\_KL & 0.01 & strong & clean & action\_mse & 0.000644 & 1.604e-05 & -7.975 & 0.009658 & 0.03125 \\
+weak\_BC\_policy\_KL & 0.01 & weak & brightness & latent\_mse & 0.05106 & 9.762e-05 & -0.1195 & 0.4207 & 0.5938 \\
+weak\_BC\_policy\_KL & 0.01 & weak & brightness & decision\_kl & 309.9 & 59.58 & -3.806 & 0.0648 & 0.1562 \\
+weak\_BC\_policy\_KL & 0.01 & weak & brightness & action\_mse & 0.07512 & 0.006069 & -0.728 & 0.02661 & 0.0625 \\
+weak\_BC\_policy\_KL & 0.01 & weak & clean & latent\_mse & 0.001508 & 4.685e-05 & 0.03795 & 0.2386 & 0.5938 \\
+weak\_BC\_policy\_KL & 0.01 & weak & clean & decision\_kl & 0.3335 & 0.01294 & -0.2577 & 0.1761 & 0.2188 \\
+weak\_BC\_policy\_KL & 0.01 & weak & clean & action\_mse & 0.000698 & 2.315e-05 & -0.2576 & 0.01395 & 0.0625 \\
+\bottomrule
+\end{tabular}

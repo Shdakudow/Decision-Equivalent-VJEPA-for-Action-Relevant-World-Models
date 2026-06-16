@@ -1,0 +1,9 @@
+candidate,candidate_planner_score,baseline,baseline_planner_score,planner_alpha,planning_horizon,metric,visual_condition,mean_difference,stderr,paired_t_pvalue,bootstrap_ci_low,bootstrap_ci_high,paired_units
+bc_plus_de_vjepa_value_planner,value_score,bc_plus_vjepa_value_planner,value_score,0.1,1,success,ALL,-0.2,,,-0.2,-0.2,1
+bc_plus_de_vjepa_value_planner,value_score,bc_plus_vjepa_value_planner,value_score,0.1,1,success,clean,-0.2,,,-0.2,-0.2,1
+bc_plus_de_vjepa_value_planner,value_score,bc_plus_vjepa_value_planner,value_score,0.1,1,return,ALL,224.74729108907547,,,224.74729108907547,224.74729108907547,1
+bc_plus_de_vjepa_value_planner,value_score,bc_plus_vjepa_value_planner,value_score,0.1,1,return,clean,224.74729108907547,,,224.74729108907547,224.74729108907547,1
+bc_plus_de_vjepa_value_planner,value_score,bc_only,bc_only,0.1,1,success,ALL,0.0,,,0.0,0.0,1
+bc_plus_de_vjepa_value_planner,value_score,bc_only,bc_only,0.1,1,success,clean,0.0,,,0.0,0.0,1
+bc_plus_de_vjepa_value_planner,value_score,bc_only,bc_only,0.1,1,return,ALL,-12.94177358748584,,,-12.94177358748584,-12.94177358748584,1
+bc_plus_de_vjepa_value_planner,value_score,bc_only,bc_only,0.1,1,return,clean,-12.94177358748584,,,-12.94177358748584,-12.94177358748584,1

@@ -1,0 +1,48 @@
+name: cross_method_metaworld
+dataset_name: metaworld-5
+base_config: configs/pilot.yaml
+archive_tasks:
+  [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+tasks:
+  [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+seeds: [42, 1000, 10000]
+evaluator_seeds: [42, 1000, 10000]
+shifts: [clean, brightness, blur, desaturation]
+artifacts_dir: outputs/comparisons
+conditions:
+  - {name: persistence, objective: persistence, reference_policy_type: none}
+  - {name: linear_dynamics, objective: vjepa, architecture: linear, reference_policy_type: none}
+  - {name: no_action_vjepa, objective: vjepa, use_actions: false, reference_policy_type: none}
+  - {name: cosine_jepa, objective: cosine_jepa, reference_policy_type: none}
+  - {name: vjepa, objective: vjepa, reference_policy_type: none}
+  - {name: action_mse, objective: hybrid_action_mse, lambda_de: 0.1, reference_policy_type: strong_bc}
+  - {name: random_policy_kl, objective: hybrid, lambda_de: 0.01, reference_policy_type: random}
+  - {name: weak_policy_kl, objective: hybrid, lambda_de: 0.01, reference_policy_type: weak_bc}
+  - {name: de_vjepa, objective: hybrid, lambda_de: 0.01, reference_policy_type: strong_bc}
+  - {name: bjepa, objective: bjepa, bjepa_prior_type: empirical_task_gaussian, bjepa_loss_type: nll, reference_policy_type: none}
+  - {name: de_bjepa, objective: de_bjepa, lambda_de: 0.01, bjepa_prior_type: empirical_task_gaussian, bjepa_loss_type: nll, reference_policy_type: strong_bc}
+output:
+  raw: results/cross_method_metaworld.csv
+analysis:
+  input: results/cross_method_metaworld.csv
+  summary: results/cross_method_metaworld_summary.csv
+  comparisons_output: results/cross_method_metaworld_paired.csv
+  table: tables/cross_method_metaworld_table.tex
+  plots_dir: plots/cross_method_metaworld
+  plot_kind: bars
+  plot_prefix: metaworld
+  baseline_method: persistence
+  pair_by_task: true
+  comparison_pair_by_task: true
+  comparisons:
+    - [vjepa, persistence]
+    - [vjepa, linear_dynamics]
+    - [vjepa, no_action_vjepa]
+    - [cosine_jepa, vjepa]
+    - [action_mse, vjepa]
+    - [random_policy_kl, vjepa]
+    - [weak_policy_kl, vjepa]
+    - [de_vjepa, vjepa]
+    - [bjepa, vjepa]
+    - [de_bjepa, vjepa]
+    - [de_bjepa, de_vjepa]

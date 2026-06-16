@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{Trajectory-progress head validation. The target is normalized position within a successful demonstration, not true task value.}
+\label{tab:progress-head-validation}
+\begin{tabular}{lrrr}
+\toprule
+Task & MSE $\downarrow$ & Pearson $\uparrow$ & Spearman $\uparrow$ \\
+\midrule
+ALL & 0.0004 & 0.998 & 0.998 \\
+reach-v3 & 0.0010 & 0.994 & 0.994 \\
+button-press-v3 & 0.0002 & 0.999 & 0.999 \\
+drawer-open-v3 & 0.0001 & 1.000 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}

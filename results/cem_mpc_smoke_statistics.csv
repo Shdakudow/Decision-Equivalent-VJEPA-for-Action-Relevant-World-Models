@@ -1,0 +1,9 @@
+candidate,candidate_planner_score,baseline,baseline_planner_score,planner_alpha,planning_horizon,metric,visual_condition,mean_difference,stderr,paired_t_pvalue,bootstrap_ci_low,bootstrap_ci_high,paired_units
+bc_plus_de_vjepa_cem,cem_value,bc_plus_vjepa_cem,cem_value,0.1,3,success,ALL,0.0,,,0.0,0.0,1
+bc_plus_de_vjepa_cem,cem_value,bc_plus_vjepa_cem,cem_value,0.1,3,success,clean,0.0,,,0.0,0.0,1
+bc_plus_de_vjepa_cem,cem_value,bc_plus_vjepa_cem,cem_value,0.1,3,return,ALL,-190.52094569802705,,,-190.52094569802705,-190.52094569802705,1
+bc_plus_de_vjepa_cem,cem_value,bc_plus_vjepa_cem,cem_value,0.1,3,return,clean,-190.52094569802705,,,-190.52094569802705,-190.52094569802705,1
+bc_plus_de_vjepa_cem,cem_value,bc_only,bc_only,0.1,3,success,ALL,0.0,,,0.0,0.0,1
+bc_plus_de_vjepa_cem,cem_value,bc_only,bc_only,0.1,3,success,clean,0.0,,,0.0,0.0,1
+bc_plus_de_vjepa_cem,cem_value,bc_only,bc_only,0.1,3,return,ALL,-10.409891206495786,,,-10.409891206495786,-10.409891206495786,1
+bc_plus_de_vjepa_cem,cem_value,bc_only,bc_only,0.1,3,return,clean,-10.409891206495786,,,-10.409891206495786,-10.409891206495786,1

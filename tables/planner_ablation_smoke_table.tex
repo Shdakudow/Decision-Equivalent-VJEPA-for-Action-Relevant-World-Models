@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{Closed-loop MetaWorld success rate (\%) with 95\% episode-bootstrap confidence intervals.}
+\label{tab:closed-loop-rollout}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lc}
+\toprule
+\textbf{Method} & \textbf{Clean} \\
+\midrule
+bc\_only & 40.0 [0.0, 80.0] \\
+bc\_plus\_vjepa: entropy\_score & 40.0 [0.0, 80.0] \\
+bc\_plus\_de\_vjepa: entropy\_score & 40.0 [0.0, 80.0] \\
+bc\_plus\_vjepa: decision\_consistency\_score & 40.0 [0.0, 80.0] \\
+bc\_plus\_de\_vjepa: decision\_consistency\_score & 20.0 [0.0, 60.0] \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

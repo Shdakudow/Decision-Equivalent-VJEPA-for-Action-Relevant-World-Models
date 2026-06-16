@@ -1,0 +1,48 @@
+name: bjepa_smoke
+base_config: configs/smoke.yaml
+archive_tasks: [reach-v3]
+tasks: [reach-v3]
+seeds: [42]
+evaluator_seeds: [1000]
+shifts: [clean]
+artifacts_dir: outputs/ablations
+base_overrides:
+  runtime.device: cuda
+  runtime.workers: 0
+  policy.epochs: 1
+  predictor.epochs: 1
+  predictor.max_batches: 2
+conditions:
+  - name: vjepa
+    objective: vjepa
+    lambda_de: 0.0
+    bjepa_prior_type: none
+    reference_policy_type: none
+  - name: bjepa
+    objective: bjepa
+    lambda_de: 0.0
+    bjepa_prior_type: empirical_task_gaussian
+    bjepa_loss_type: nll
+    reference_policy_type: none
+  - name: de_vjepa
+    objective: hybrid
+    lambda_de: 0.01
+    bjepa_prior_type: none
+    reference_policy_type: strong_bc
+  - name: de_bjepa
+    objective: de_bjepa
+    lambda_de: 0.01
+    bjepa_prior_type: empirical_task_gaussian
+    bjepa_loss_type: nll
+    reference_policy_type: strong_bc
+output:
+  raw: results/bjepa_smoke.csv
+analysis:
+  input: results/bjepa_smoke.csv
+  summary: results/bjepa_smoke_summary.csv
+  table: tables/bjepa_smoke_table.tex
+  plots_dir: plots
+  plot_kind: bars
+  plot_prefix: bjepa_smoke
+  baseline_method: vjepa
+  pair_by_task: true

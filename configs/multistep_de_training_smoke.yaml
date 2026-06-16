@@ -1,0 +1,45 @@
+experiment:
+  seed: 42
+  method: hybrid
+  tag: multistep_k3_lambda1e-3_smoke
+
+data:
+  tasks: [reach-v3]
+  archive_tasks: [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+  validation_fraction: 0.2
+  encoded_path: data/metaworld_pilot_resnet18.npz
+
+policy:
+  quality: strong
+  hidden_dim: 512
+  task_dim: 32
+  checkpoint_dir: outputs/comparisons/cross_method_metaworld_20260611T033319Z
+
+predictor:
+  hidden_dim: 1024
+  stochastic_dim: 64
+  task_dim: 32
+  horizon: 3
+  batch_size: 64
+  epochs: 1
+  max_batches: 2
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  gradient_clip: 5.0
+  use_actions: true
+  architecture: mlp
+
+loss:
+  beta: 0.001
+  decision_weight: 0.001
+  gamma: 0.95
+  epsilon0: 0.0
+  uncertainty_scale: 0.0
+
+runtime:
+  device: cuda
+  workers: 0
+  amp: true
+
+output:
+  dir: outputs/multistep_training_smoke

@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Closed-loop MetaWorld success rate (\%) with 95\% episode-bootstrap confidence intervals.}
+\label{tab:closed-loop-rollout}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lc}
+\toprule
+\textbf{Method} & \textbf{Clean} \\
+\midrule
+bc\_only & 33.3 [0.0, 100.0] \\
+bc\_plus\_vjepa\_cem: score=cem\_value, alpha=0.1, planning\_horizon=3 & 33.3 [0.0, 100.0] \\
+bc\_plus\_de\_vjepa\_cem: score=cem\_value, alpha=0.1, planning\_horizon=3 & 33.3 [0.0, 100.0] \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

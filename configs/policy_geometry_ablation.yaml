@@ -1,0 +1,28 @@
+name: policy_geometry_ablation
+base_config: configs/pilot.yaml
+archive_tasks:
+  [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+tasks:
+  [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+seeds: [42, 1000, 10000]
+evaluator_seeds: [42, 1000, 10000]
+shifts: [clean, brightness]
+artifacts_dir: outputs/ablations
+base_overrides:
+  policy.weak_epochs: 2
+  policy.weak_data_fraction: 0.2
+conditions:
+  - {name: latent_only, objective: vjepa, lambda: 0.0, reference_policy_type: none}
+  - {name: random_policy_KL, objective: hybrid, lambda: 0.01, reference_policy_type: random}
+  - {name: weak_BC_policy_KL, objective: hybrid, lambda: 0.01, reference_policy_type: weak}
+  - {name: strong_BC_policy_KL, objective: hybrid, lambda: 0.01, reference_policy_type: strong}
+output:
+  raw: results/policy_geometry_ablation.csv
+analysis:
+  input: results/policy_geometry_ablation.csv
+  summary: results/policy_geometry_ablation_summary.csv
+  table: tables/policy_geometry_ablation_table.tex
+  plots_dir: plots
+  plot_kind: bars
+  plot_prefix: policy_geometry_ablation
+  baseline_method: latent_only

@@ -1,0 +1,27 @@
+name: kl_vs_action_mse
+base_config: configs/pilot.yaml
+archive_tasks:
+  [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+tasks:
+  [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+seeds: [42, 1000, 10000]
+evaluator_seeds: [42, 1000, 10000]
+shifts: [clean, brightness]
+artifacts_dir: outputs/ablations
+conditions:
+  - {name: latent_only, objective: vjepa, lambda: 0.0, reference_policy_type: none}
+  - {name: action_mse_1e-4, objective: hybrid_action_mse, lambda: 0.0001, reference_policy_type: strong}
+  - {name: action_mse_1e-3, objective: hybrid_action_mse, lambda: 0.001, reference_policy_type: strong}
+  - {name: action_mse_1e-2, objective: hybrid_action_mse, lambda: 0.01, reference_policy_type: strong}
+  - {name: action_mse_1e-1, objective: hybrid_action_mse, lambda: 0.1, reference_policy_type: strong}
+  - {name: policy_KL_1e-2, objective: hybrid, lambda: 0.01, reference_policy_type: strong}
+output:
+  raw: results/kl_vs_action_mse.csv
+analysis:
+  input: results/kl_vs_action_mse.csv
+  summary: results/kl_vs_action_mse_summary.csv
+  table: tables/kl_vs_action_mse_table.tex
+  plots_dir: plots
+  plot_kind: bars
+  plot_prefix: kl_vs_action_mse
+  baseline_method: latent_only

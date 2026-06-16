@@ -1,0 +1,9 @@
+candidate,baseline,metric,visual_condition,mean_difference,stderr,paired_t_pvalue,bootstrap_ci_low,bootstrap_ci_high,paired_units
+bc_plus_de_vjepa,bc_plus_vjepa,success,ALL,0.2,,,0.2,0.2,1
+bc_plus_de_vjepa,bc_plus_vjepa,success,clean,0.2,,,0.2,0.2,1
+bc_plus_de_vjepa,bc_plus_vjepa,return,ALL,18.028103447652597,,,18.028103447652597,18.028103447652597,1
+bc_plus_de_vjepa,bc_plus_vjepa,return,clean,18.028103447652597,,,18.028103447652597,18.028103447652597,1
+bc_plus_de_vjepa,bc_only,success,ALL,0.0,,,0.0,0.0,1
+bc_plus_de_vjepa,bc_only,success,clean,0.0,,,0.0,0.0,1
+bc_plus_de_vjepa,bc_only,return,ALL,36.86590396396491,,,36.86590396396491,36.86590396396491,1
+bc_plus_de_vjepa,bc_only,return,clean,36.86590396396491,,,36.86590396396491,36.86590396396491,1

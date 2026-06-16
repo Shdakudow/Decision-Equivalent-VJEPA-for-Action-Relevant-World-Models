@@ -1,0 +1,54 @@
+experiment:
+  seed: 42
+  method: vjepa
+experiment_name: backbone_validation_dinov2
+name: backbone_validation_dinov2
+base_config: configs/pilot_dinov2.yaml
+archive_tasks: [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+tasks: [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+seeds: [42, 1000, 10000]
+evaluator_seeds: [42, 1000, 10000]
+shifts: [clean, brightness, blur, desaturation]
+artifacts_dir: outputs/backbone_validation
+conditions:
+  - name: vjepa
+    objective: vjepa
+    lambda_de: 0.0
+    bjepa_prior_type: none
+    reference_policy_type: none
+  - name: de_vjepa
+    objective: hybrid
+    lambda_de: 0.01
+    bjepa_prior_type: none
+    reference_policy_type: strong_bc
+
+data:
+  tasks: [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+  raw_path: data/metaworld_pilot_raw.npz
+  encoded_path: data/metaworld_pilot_dinov2_vits14.npz
+
+encoder:
+  name: dinov2_vits14
+  batch_size: 128
+
+runtime:
+  device: cuda
+  workers: 0
+  amp: true
+
+output:
+  raw: results/backbone_validation_raw.csv
+
+analysis:
+  input: results/backbone_validation_raw.csv
+  summary: results/backbone_validation_summary.csv
+  comparisons_output: results/backbone_validation_paired.csv
+  table: tables/backbone_validation_table.tex
+  plots_dir: plots
+  plot_kind: bars
+  plot_prefix: backbone_validation
+  baseline_method: vjepa
+  pair_by_task: true
+  comparison_pair_by_task: true
+  comparisons:
+    - [de_vjepa, vjepa]

@@ -1,0 +1,30 @@
+\begin{tabular}{lrlllrrrrr}
+\toprule
+method & lambda & reference\_policy\_type & shift & metric & mean & stderr & relative\_change\_percent & paired\_t\_p & wilcoxon\_p \\
+\midrule
+hybrid\_de\_vjepa & 0.01 & strong & blur & latent\_mse & 0.2394 & 0.002973 & 1.011 & 0.3372 & 0.125 \\
+hybrid\_de\_vjepa & 0.01 & strong & blur & decision\_kl & 640.9 & 54.62 & -13.46 & 0.05235 & 0.0625 \\
+hybrid\_de\_vjepa & 0.01 & strong & blur & action\_mse & 0.1609 & 0.004132 & -0.8614 & 0.4028 & 0.6875 \\
+hybrid\_de\_vjepa & 0.01 & strong & brightness & latent\_mse & 0.05114 & 7.986e-05 & 0.02973 & 0.8894 & 0.875 \\
+hybrid\_de\_vjepa & 0.01 & strong & brightness & decision\_kl & 243.5 & 54.59 & -24.4 & 0.01883 & 0.03125 \\
+hybrid\_de\_vjepa & 0.01 & strong & brightness & action\_mse & 0.0711 & 0.005739 & -6.046 & 0.04559 & 0.1562 \\
+hybrid\_de\_vjepa & 0.01 & strong & clean & latent\_mse & 0.001743 & 5.899e-05 & 15.61 & 3.871e-05 & 0.03125 \\
+hybrid\_de\_vjepa & 0.01 & strong & clean & decision\_kl & 0.2638 & 0.01085 & -21.11 & 3.057e-06 & 0.03125 \\
+hybrid\_de\_vjepa & 0.01 & strong & clean & action\_mse & 0.000644 & 1.604e-05 & -7.975 & 0.009658 & 0.03125 \\
+hybrid\_de\_vjepa & 0.01 & strong & desaturate & latent\_mse & 0.2031 & 0.002491 & 1.366 & 0.122 & 0.125 \\
+hybrid\_de\_vjepa & 0.01 & strong & desaturate & decision\_kl & 4326 & 908.6 & 6.745 & 0.1326 & 0.2188 \\
+hybrid\_de\_vjepa & 0.01 & strong & desaturate & action\_mse & 0.378 & 0.02889 & 0.9381 & 0.358 & 0.3125 \\
+latent\_only & 0 & none & blur & latent\_mse & 0.237 & 0.002775 & 0 & NaN & NaN \\
+latent\_only & 0 & none & blur & decision\_kl & 740.6 & 83.66 & 0 & NaN & NaN \\
+latent\_only & 0 & none & blur & action\_mse & 0.1623 & 0.005388 & 0 & NaN & NaN \\
+latent\_only & 0 & none & brightness & latent\_mse & 0.05113 & 2.82e-05 & 0 & NaN & NaN \\
+latent\_only & 0 & none & brightness & decision\_kl & 322.1 & 58.68 & 0 & NaN & NaN \\
+latent\_only & 0 & none & brightness & action\_mse & 0.07567 & 0.006058 & 0 & NaN & NaN \\
+latent\_only & 0 & none & clean & latent\_mse & 0.001507 & 4.716e-05 & 0 & NaN & NaN \\
+latent\_only & 0 & none & clean & decision\_kl & 0.3343 & 0.01299 & 0 & NaN & NaN \\
+latent\_only & 0 & none & clean & action\_mse & 0.0006998 & 2.299e-05 & 0 & NaN & NaN \\
+latent\_only & 0 & none & desaturate & latent\_mse & 0.2004 & 0.001643 & 0 & NaN & NaN \\
+latent\_only & 0 & none & desaturate & decision\_kl & 4053 & 858.5 & 0 & NaN & NaN \\
+latent\_only & 0 & none & desaturate & action\_mse & 0.3745 & 0.0269 & 0 & NaN & NaN \\
+\bottomrule
+\end{tabular}

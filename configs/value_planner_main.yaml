@@ -1,0 +1,38 @@
+experiment: {seed: 42, method: vjepa}
+experiment_name: value_planner
+
+data:
+  tasks: [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+  max_steps: 200
+  image_size: 224
+  camera: corner2
+  encoded_path: data/metaworld_pilot_resnet18.npz
+
+encoder: {name: resnet18_imagenet}
+policy: {quality: strong, hidden_dim: 512, task_dim: 32}
+predictor: {hidden_dim: 1024, stochastic_dim: 64, task_dim: 32, horizon: 1}
+bjepa: {prior_type: empirical_task_gaussian}
+runtime: {device: cuda, workers: 0, amp: true}
+output: {dir: outputs/pilot}
+
+closed_loop:
+  tasks: [reach-v3, button-press-v3, drawer-open-v3]
+  source_experiment: cross_method_metaworld
+  artifacts_dir: outputs/comparisons
+  methods: [bc_only, bc_plus_vjepa_value_planner, bc_plus_de_vjepa_value_planner]
+  seeds: [42, 1000, 10000]
+  policy_seed: 7
+  require_independent_policy: true
+  visual_conditions: [clean, brightness, background_shift]
+  episodes_per_task_seed: 20
+  max_episode_steps: 200
+  environment_seed: 5026
+  planner_type: one_step_value_planner
+  planner_alphas: [0.0, 0.01, 0.1, 0.3]
+  num_candidate_actions: 32
+  candidate_noise_std: 0.12
+  value_head_checkpoint_dir: checkpoints
+  lambda_de: 0.01
+  resume: true
+  raw_output: results/value_planner_raw.csv
+  summary_output: results/value_planner_runner_summary.csv

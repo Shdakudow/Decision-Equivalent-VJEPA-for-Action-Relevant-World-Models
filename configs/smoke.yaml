@@ -1,0 +1,50 @@
+experiment:
+  seed: 7
+  method: de_vjepa_band
+data:
+  tasks: [reach-v3]
+  episodes_per_task: 3
+  max_steps: 30
+  image_size: 224
+  camera: corner2
+  validation_fraction: 0.34
+  raw_path: data/smoke_raw.npz
+  encoded_path: data/smoke_encoded.npz
+encoder:
+  name: resnet18_imagenet
+  batch_size: 64
+policy:
+  quality: strong
+  hidden_dim: 128
+  task_dim: 8
+  batch_size: 64
+  epochs: 2
+  weak_epochs: 1
+  learning_rate: 0.001
+  weight_decay: 0.0
+predictor:
+  hidden_dim: 256
+  stochastic_dim: 16
+  task_dim: 8
+  horizon: 1
+  batch_size: 32
+  epochs: 2
+  learning_rate: 0.001
+  weight_decay: 0.0
+  gradient_clip: 5.0
+loss:
+  beta: 0.001
+  epsilon0: 0.01
+  uncertainty_scale: 0.05
+  gamma: 0.95
+bjepa:
+  prior_type: empirical_task_gaussian
+  loss_type: nll
+evaluation:
+  batch_size: 128
+runtime:
+  device: cuda
+  workers: 2
+  amp: true
+output:
+  dir: outputs/smoke

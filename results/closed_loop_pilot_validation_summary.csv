@@ -1,0 +1,4 @@
+method,task,shift,success_rate_mean,success_rate_std,success_rate_count,average_return_mean,average_return_std,average_return_count,episode_length_mean,episode_length_std,episode_length_count,failure_rate_mean,failure_rate_std,failure_rate_count,success_rate_stderr,average_return_stderr,episode_length_stderr,failure_rate_stderr
+bc_only,reach-v3,clean,0.0,,1,48.04395976044081,,1,20.0,,1,1.0,,1,,,,
+de_vjepa,reach-v3,clean,0.0,0.0,3,47.57316243334558,0.20039740245968868,3,20.0,0.0,3,1.0,0.0,3,0.0,0.11569949425500303,0.0,0.0
+vjepa,reach-v3,clean,0.0,0.0,3,48.235492805590695,0.35350975065788764,3,20.0,0.0,3,1.0,0.0,3,0.0,0.20409894970348894,0.0,0.0

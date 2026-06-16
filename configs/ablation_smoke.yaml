@@ -1,0 +1,33 @@
+name: ablation_smoke
+base_config: configs/smoke.yaml
+archive_tasks: [reach-v3]
+tasks: [reach-v3]
+seeds: [7]
+evaluator_seeds: [8]
+shifts: [clean]
+artifacts_dir: outputs/ablations
+base_overrides:
+  runtime.device: cuda
+  runtime.workers: 0
+  policy.epochs: 1
+  predictor.epochs: 1
+  predictor.max_batches: 2
+conditions:
+  - name: latent_only
+    objective: vjepa
+    lambda: 0.0
+    reference_policy_type: none
+  - name: latent_plus_policy_KL
+    objective: hybrid
+    lambda: 0.01
+    reference_policy_type: strong
+output:
+  raw: results/ablation_smoke.csv
+analysis:
+  input: results/ablation_smoke.csv
+  summary: results/ablation_smoke_summary.csv
+  table: tables/ablation_smoke_table.tex
+  plots_dir: plots
+  plot_kind: bars
+  plot_prefix: ablation_smoke
+  baseline_method: latent_only

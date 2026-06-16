@@ -1,0 +1,33 @@
+name: core_vjepa_bjepa_de
+base_config: configs/pilot.yaml
+archive_tasks:
+  [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+tasks:
+  [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+seeds: [42, 1000, 10000]
+evaluator_seeds: [42, 1000, 10000]
+shifts: [clean, brightness, blur, desaturation]
+artifacts_dir: outputs/ablations
+conditions:
+  - {name: vjepa, objective: vjepa, lambda_de: 0.0, bjepa_prior_type: none, reference_policy_type: none}
+  - {name: bjepa, objective: bjepa, lambda_de: 0.0, bjepa_prior_type: empirical_task_gaussian, bjepa_loss_type: nll, reference_policy_type: none}
+  - {name: de_vjepa, objective: hybrid, lambda_de: 0.01, bjepa_prior_type: none, reference_policy_type: strong_bc}
+  - {name: de_bjepa, objective: de_bjepa, lambda_de: 0.01, bjepa_prior_type: empirical_task_gaussian, bjepa_loss_type: nll, reference_policy_type: strong_bc}
+output:
+  raw: results/vjepa_bjepa_de_comparison.csv
+analysis:
+  input: results/vjepa_bjepa_de_comparison.csv
+  summary: results/vjepa_bjepa_de_comparison_summary.csv
+  comparisons_output: results/vjepa_bjepa_de_comparison_paired.csv
+  table: tables/vjepa_bjepa_de_comparison_table.tex
+  plots_dir: plots
+  plot_kind: bars
+  plot_prefix: method_comparison
+  baseline_method: vjepa
+  pair_by_task: true
+  comparison_pair_by_task: true
+  comparisons:
+    - [bjepa, vjepa]
+    - [de_vjepa, vjepa]
+    - [de_bjepa, bjepa]
+    - [de_bjepa, de_vjepa]

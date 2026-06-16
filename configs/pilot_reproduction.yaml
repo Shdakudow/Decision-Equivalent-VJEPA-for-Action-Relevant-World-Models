@@ -1,0 +1,29 @@
+name: pilot_reproduction
+base_config: configs/pilot.yaml
+archive_tasks:
+  [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+tasks:
+  [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+seeds: [42, 1000, 10000]
+evaluator_seeds: [42, 1000, 10000]
+shifts: [clean, brightness, blur, desaturate]
+artifacts_dir: outputs/ablations
+conditions:
+  - name: latent_only
+    objective: vjepa
+    lambda: 0.0
+    reference_policy_type: none
+  - name: hybrid_de_vjepa
+    objective: hybrid
+    lambda: 0.01
+    reference_policy_type: strong
+output:
+  raw: results/pilot_reproduction.csv
+analysis:
+  input: results/pilot_reproduction.csv
+  summary: results/pilot_reproduction_summary.csv
+  table: tables/pilot_reproduction_table.tex
+  plots_dir: plots
+  plot_kind: bars
+  plot_prefix: pilot_reproduction
+  baseline_method: latent_only

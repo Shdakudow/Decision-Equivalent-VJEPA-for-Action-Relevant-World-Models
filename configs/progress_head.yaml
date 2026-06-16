@@ -1,0 +1,28 @@
+experiment:
+  seed: 42
+experiment_name: progress_head
+
+data:
+  tasks: [reach-v3, button-press-v3, drawer-open-v3]
+  archive_tasks: [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+  encoded_path: data/metaworld_pilot_resnet18.npz
+
+runtime:
+  device: cuda
+
+progress_head:
+  seeds: [42, 1000, 10000]
+  epochs: 30
+  batch_size: 1024
+  hidden_dim: 512
+  task_dim: 32
+  learning_rate: 0.0003
+  weight_decay: 0.00001
+  validation_fraction: 0.2
+  checkpoint_dir: checkpoints
+  checkpoint_prefix: progress_head
+  validation_output: results/progress_head_validation.csv
+  summary_output: results/progress_head_validation_summary.csv
+  plot_output: plots/progress_head_pred_vs_target.png
+  by_task_plot_output: plots/progress_head_by_task.png
+  table_output: tables/progress_head_validation_table.tex

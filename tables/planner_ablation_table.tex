@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\caption{Closed-loop MetaWorld success rate (\%) with 95\% episode-bootstrap confidence intervals.}
+\label{tab:closed-loop-rollout}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+\textbf{Method} & \textbf{Clean} & \textbf{Brightness} & \textbf{Background Shift} \\
+\midrule
+bc\_only & 78.9 [72.8, 85.0] & 13.9 [8.9, 19.4] & 30.0 [23.3, 36.7] \\
+bc\_plus\_vjepa: entropy\_score & 60.0 [52.8, 67.2] & 4.4 [1.7, 7.2] & 31.1 [24.4, 37.8] \\
+bc\_plus\_de\_vjepa: entropy\_score & 60.0 [52.8, 67.2] & 6.7 [3.3, 10.6] & 32.2 [26.1, 39.4] \\
+bc\_plus\_vjepa: decision\_consistency\_score & 67.2 [60.0, 73.9] & 12.2 [7.8, 16.7] & 27.2 [20.6, 33.9] \\
+bc\_plus\_de\_vjepa: decision\_consistency\_score & 68.3 [61.7, 75.0] & 3.9 [1.1, 7.2] & 31.1 [24.4, 37.8] \\
+bc\_plus\_vjepa: action\_mean\_consistency\_score & 78.9 [72.8, 84.4] & 13.9 [8.9, 18.9] & 30.0 [23.3, 36.7] \\
+bc\_plus\_de\_vjepa: action\_mean\_consistency\_score & 78.9 [72.8, 84.4] & 13.9 [8.9, 19.4] & 30.0 [23.3, 37.2] \\
+bc\_plus\_vjepa: random\_candidate\_control & 75.0 [68.3, 81.7] & 12.8 [8.3, 17.8] & 28.3 [22.2, 35.0] \\
+bc\_plus\_de\_vjepa: random\_candidate\_control & 75.0 [68.9, 81.1] & 12.8 [8.3, 17.8] & 28.3 [21.7, 35.0] \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

@@ -1,0 +1,46 @@
+name: banded_de_vjepa
+dataset_name: metaworld-5
+base_config: configs/pilot.yaml
+archive_tasks:
+  [reach-v3, button-press-v3, drawer-open-v3, door-open-v3, pick-place-v3]
+tasks: [reach-v3, button-press-v3, drawer-open-v3]
+seeds: [42, 1000, 10000]
+evaluator_seeds: [42, 1000, 10000]
+shifts: [clean, brightness, blur, desaturation]
+artifacts_dir: outputs/ablations
+conditions:
+  - {name: vjepa, objective: vjepa, lambda_de: 0.0,
+     reference_policy_type: none}
+  - {name: de_vjepa, objective: hybrid, lambda_de: 0.01,
+     reference_policy_type: strong_bc}
+  - {name: constant_band_e001, objective: de_vjepa_band, lambda_de: 0.01,
+     band_type: constant_band, epsilon0: 0.01, uncertainty_scale: 0.0,
+     reference_policy_type: strong_bc}
+  - {name: constant_band_e005, objective: de_vjepa_band, lambda_de: 0.01,
+     band_type: constant_band, epsilon0: 0.05, uncertainty_scale: 0.0,
+     reference_policy_type: strong_bc}
+  - {name: constant_band_e01, objective: de_vjepa_band, lambda_de: 0.01,
+     band_type: constant_band, epsilon0: 0.1, uncertainty_scale: 0.0,
+     reference_policy_type: strong_bc}
+  - {name: entropy_band_e001_c01, objective: de_vjepa_band, lambda_de: 0.01,
+     band_type: entropy_band, epsilon0: 0.01, uncertainty_scale: 0.1,
+     reference_policy_type: strong_bc}
+  - {name: entropy_band_e001_c05, objective: de_vjepa_band, lambda_de: 0.01,
+     band_type: entropy_band, epsilon0: 0.01, uncertainty_scale: 0.5,
+     reference_policy_type: strong_bc}
+  - {name: entropy_band_e005_c01, objective: de_vjepa_band, lambda_de: 0.01,
+     band_type: entropy_band, epsilon0: 0.05, uncertainty_scale: 0.1,
+     reference_policy_type: strong_bc}
+  - {name: entropy_band_e005_c05, objective: de_vjepa_band, lambda_de: 0.01,
+     band_type: entropy_band, epsilon0: 0.05, uncertainty_scale: 0.5,
+     reference_policy_type: strong_bc}
+output:
+  raw: results/banded_de_vjepa_offline.csv
+analysis:
+  input: results/banded_de_vjepa_offline.csv
+  summary: results/banded_de_vjepa_offline_summary.csv
+  table: tables/banded_de_vjepa_table.tex
+  plots_dir: plots/banded_de_vjepa
+  plot_kind: bars
+  plot_prefix: banded_de_tradeoff
+  baseline_method: vjepa
