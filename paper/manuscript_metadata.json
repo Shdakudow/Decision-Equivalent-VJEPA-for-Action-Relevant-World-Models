@@ -1,0 +1,28 @@
+{
+  "title": "DE-VJEPA: Decision-Equivalent Latent Prediction for Policy Fidelity and Control",
+  "abstract": "Accurate latent predictions need not preserve a controller's decisions, and preserving those decisions need not improve task success. We study these relationships through DE-VJEPA, which augments deterministic latent regression with a Kullback\u2013Leibler (KL) penalty between a frozen reference policy's action distributions at observed and predicted future representations. The reported comparisons use a frozen ResNet-18 encoder on five MetaWorld tasks and PushT, with evaluation policies trained using different seeds. On clean MetaWorld, the policy-regularized predictor has 15.4% higher latent mean squared error but 19.8% lower decision KL than the latent-only baseline, reversing the model ranking. Decision KL improves in seven of eight dataset\u2013condition comparisons, and its advantage persists through five-step prediction under recorded actions. Reference-policy and action-mean ablations probe the supervision signal; persistence remains a stronger baseline on clean PushT. Across 14,850 closed-loop MetaWorld episodes, however, the tested planners do not establish an aggregate success advantage over latent-only prediction. These findings distinguish latent accuracy, policy fidelity, and control performance as separate evaluation criteria and show the limits of using offline policy agreement to infer control benefits.",
+  "repository_update_date": "2026-11-02",
+  "format": "TMLR anonymous review format",
+  "main_content_pages": 12,
+  "references_start_page": 13,
+  "total_pdf_pages": 36,
+  "submission_type": "Regular submission (no more than 12 pages of main content)",
+  "manuscript": {
+    "path": "paper/DE-VJEPA.pdf",
+    "sha256": "c1c347ec613435da1b68d99c7dcbbd8f475ab727003ec046d99957976c71d359"
+  },
+  "source_bundle": {
+    "path": "paper/DE-VJEPA_source.zip",
+    "sha256": "8e7b39b5d8ab4cfa76be67b5896682fb7b5181c889967503076d7da57de42086"
+  },
+  "original_aggregate_result_CSVs": 53,
+  "original_aggregate_experiments_rerun": false,
+  "historical_run_execution_version_verified": false,
+  "implementation_scope": "Deterministic h=0 prediction path; posterior receives only its KL regularizer. The VJEPA/DE-VJEPA result labels are retained release identifiers.",
+  "illustrative_PushT_rerun": {
+    "source_seed": 42,
+    "evaluator_seed": 1000,
+    "purpose": "Single held-out transition for the worked example; separate from original aggregate results."
+  },
+  "release_association": "Sources, configs and summaries match the original release. Run-level source identifiers, original checkpoints and raw run logs were not recovered."
+}
